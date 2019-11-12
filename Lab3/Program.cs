@@ -17,7 +17,9 @@ namespace Lab3
             //ifcase();
             //forcase();
             //2 задание
-            WhatDayWExceptions.forcase();
+            //WhatDayWExceptions.forcase();
+            //3 задание
+            //WhatDayWYear.forcase();
         }
         static void ifcase()
         {
@@ -265,6 +267,8 @@ namespace Lab3
                 Console.WriteLine("Please enter the day of the year");
                 int dayNum = int.Parse(Console.ReadLine());
 
+                if (dayNum < 1 || dayNum > 365) { throw new ArgumentOutOfRangeException("Day out of range"); }
+
                 foreach (int daysInMonth in DaysInMonths)
                 {
                     if (dayNum <= daysInMonth)
@@ -282,9 +286,96 @@ namespace Lab3
                 string monthName = temp.ToString();
                 Console.WriteLine("{0} {1}", dayNum, monthName);
                 Console.ReadKey();
-            }catch(Exception caught)
+            }
+            catch (Exception caught)
             {
                 Console.WriteLine(caught);
+                Console.ReadKey();
+            }
+        }
+    }
+
+    class WhatDayWYear
+    {
+        public enum MonthName
+        {
+            January = 0,
+            February = 1,
+            March = 2,
+            April = 3,
+            May = 4,
+            June = 5,
+            July = 6,
+            Augest = 7,
+            September = 8,
+            October = 9,
+            November = 10,
+            December = 11
+
+        }
+        static System.Collections.ICollection DaysInMonths
+        = new int[12] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        static System.Collections.ICollection DaysInLeapMonths
+        = new int[12] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+        public static void forcase()
+        {
+            try
+            {
+                int monthNum = 0;
+                //year
+                Console.WriteLine("Please enter the year:");
+                int yearNum = int.Parse(Console.ReadLine());
+
+                Boolean isLeapYear = (yearNum % 4 == 0) && (yearNum % 100 != 0 || yearNum % 400 == 0);
+                int maxDayNum = isLeapYear ? 366 : 365;
+
+                //day
+                Console.WriteLine("Please enter the day of the year:");
+                int dayNum = int.Parse(Console.ReadLine());
+
+                if (dayNum < 1 || dayNum > maxDayNum) { throw new ArgumentOutOfRangeException("Day out of range"); }
+
+                if (isLeapYear)
+                {
+                    foreach (int daysInMonth in DaysInLeapMonths)
+                    {
+                        if (dayNum <= daysInMonth)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            dayNum -= daysInMonth;
+                            monthNum++;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (int daysInMonth in DaysInMonths)
+                    {
+                        if (dayNum <= daysInMonth)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            dayNum -= daysInMonth;
+                            monthNum++;
+                        }
+                    }
+                }
+
+               MonthName temp = (MonthName)monthNum;
+                string monthName = temp.ToString();
+                Console.WriteLine("{0} {1}", dayNum, monthName);
+                Console.ReadKey();
+            }
+            catch (Exception caught)
+            {
+                Console.WriteLine(caught);
+                Console.ReadKey();
             }
         }
     }
