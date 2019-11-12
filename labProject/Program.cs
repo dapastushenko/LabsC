@@ -10,7 +10,8 @@ namespace labProject
     {
         static void Main(string[] args)
         {
-            callYrName();
+            //callYrName();
+            divider();
         }
 
         static void callYrName()
@@ -24,9 +25,24 @@ namespace labProject
             Console.ReadKey();
         }
 
-        static void Divider()
+        static void divider()
         {
+            try{
+                Console.WriteLine("Введите целое число!");
+                String str = Console.ReadLine();
+                int i = Int32.Parse(str);
 
+                 Console.WriteLine("Введите второе число!");
+                str = Console.ReadLine();
+                int j = Int32.Parse(str);
+                int k=i/j;
+
+                Console.WriteLine("Результат деления {0} на {1}: {2}",i,j,k);
+                Console.ReadKey();
+                }catch(DivideByZeroException e){
+                    Console.WriteLine("Ошибка: {0}", e);
+                }
+               
         }
 
     }
