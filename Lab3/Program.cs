@@ -13,8 +13,11 @@ namespace Lab3
 
         static void Main(string[] args)
         {
-            ifcase();
-            forcase();
+            //1 задание
+            //ifcase();
+            //forcase();
+            //2 задание
+            WhatDayWExceptions.forcase();
         }
         static void ifcase()
         {
@@ -230,6 +233,59 @@ namespace Lab3
             string monthName = temp.ToString();
             Console.WriteLine("{0} {1}", dayNum, monthName);
             Console.ReadKey();
+        }
+    }
+    class WhatDayWExceptions
+    {
+        public enum MonthName
+        {
+            January = 0,
+            February = 1,
+            March = 2,
+            April = 3,
+            May = 4,
+            June = 5,
+            July = 6,
+            Augest = 7,
+            September = 8,
+            October = 9,
+            November = 10,
+            December = 11
+
+        }
+        static System.Collections.ICollection DaysInMonths
+        = new int[12] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+        public static void forcase()
+        {
+            try
+            {
+                int monthNum = 0;
+
+                Console.WriteLine("Please enter the day of the year");
+                int dayNum = int.Parse(Console.ReadLine());
+
+                foreach (int daysInMonth in DaysInMonths)
+                {
+                    if (dayNum <= daysInMonth)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        dayNum -= daysInMonth;
+                        monthNum++;
+                    }
+                }
+
+                MonthName temp = (MonthName)monthNum;
+                string monthName = temp.ToString();
+                Console.WriteLine("{0} {1}", dayNum, monthName);
+                Console.ReadKey();
+            }catch(Exception caught)
+            {
+                Console.WriteLine(caught);
+            }
         }
     }
 }
