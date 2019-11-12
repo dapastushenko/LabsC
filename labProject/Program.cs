@@ -10,7 +10,7 @@ namespace labProject
     {
         static void Main(string[] args)
         {
-            //callYrName();
+            callYrName();
             divider();
         }
 
