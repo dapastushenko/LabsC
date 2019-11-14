@@ -11,9 +11,9 @@ namespace Lab4
         static void Main(string[] args)
         {
             Console.WriteLine("Input first num");
-            int x = int.Parse(Console.ReadLine);
+            int x = int.Parse(Console.ReadLine());
             Console.WriteLine("Input secon num");
-            int y = int.Parse(Console.ReadLine);
+            int y = int.Parse(Console.ReadLine());
 
             int greater = Utils.Greater(x, y);
             Console.WriteLine("The greater value is:" + greater);
@@ -23,8 +23,9 @@ namespace Lab4
             Console.WriteLine("After swap:" + x + "," + y);
 
             //3 задача
+            int f;
             bool fact = Utils.Factorial(x, out f);
-            if (ok)
+            if (fact)
             {
                 Console.WriteLine("Factorial x(" + x + ")=" + f);
             }
@@ -46,7 +47,7 @@ namespace Lab4
 
         }
 
-        public static void Swap(int a, int b)
+        public static void Swap(ref int a,ref int b)
         {
             int temp = a;
             a = b;
@@ -59,7 +60,7 @@ namespace Lab4
             int f = 1;
             bool ok = true;
 
-            if (ok < 0) ok = false;
+            if (n < 0) ok = false;
             try
             {
                 checked
@@ -73,7 +74,7 @@ namespace Lab4
             {
                 f = 0;
                 ok = false;
-                //Console.WriteLine(e);
+                Console.WriteLine(e);
             }
             answer = f;
             return ok;
