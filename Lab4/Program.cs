@@ -69,7 +69,7 @@ namespace Lab4
                         f *= k;
                     }
                 }
-            }catch(Exception e)
+            }catch(Exception e) 
             {
                 f = 0;
                 ok = false;
