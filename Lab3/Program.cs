@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Lab3
 {
     class WhatDay
@@ -20,6 +21,7 @@ namespace Lab3
             //WhatDayWExceptions.forcase();
             //3 задание
             //WhatDayWYear.forcase();
+            
         }
         static void ifcase()
         {
